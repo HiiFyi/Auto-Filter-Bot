@@ -54,7 +54,7 @@ OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/')
 UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/')
 
 #Force Subscription Channel (Put Same Channel Id In Both Veriables)
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-100')) 
+AUTH_CHANNEL = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNEL', '').split()] 
 AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-100'))
 
 IS_VERIFY = is_enabled('IS_VERIFY', True)
