@@ -172,7 +172,7 @@ async def start(client, message):
                     print("Bot Ko AUTH_CHANNEL Per Admin Bana Bhai Pahile 🤧")
                     return
                 btn = []
-                channel_ids = str(settings.get('fsub_id', AUTH_CHANNEL)).split()
+                channel_ids = settings.get('fsub_id', AUTH_CHANNEL)
                 for ch_id in channel_ids:
                     try:
                         invite = await client.create_chat_invite_link(int(ch_id), creates_join_request=True)
@@ -199,7 +199,7 @@ async def start(client, message):
             channel = int(id)
             if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
                 btn = []
-                channel_ids = str(settings.get('fsub_id', AUTH_CHANNEL)).split()
+                channel_ids = settings.get('fsub_id', AUTH_CHANNEL)
                 for ch_id in channel_ids:
                     try:
                         invite = await client.create_chat_invite_link(int(ch_id), creates_join_request=True)
