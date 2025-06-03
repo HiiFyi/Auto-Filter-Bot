@@ -173,6 +173,9 @@ async def start(client, message):
                     return
                 btn = []
                 channel_ids = settings.get('fsub_id', AUTH_CHANNEL)
+                # List Function 
+                if isinstance(channel_ids, int):
+                channel_ids = [channel_ids]
                 for ch_id in channel_ids:
                     try:
                         invite = await client.create_chat_invite_link(int(ch_id), creates_join_request=True)
@@ -200,6 +203,9 @@ async def start(client, message):
             if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
                 btn = []
                 channel_ids = settings.get('fsub_id', AUTH_CHANNEL)
+                # List Function 
+                if isinstance(channel_ids, int):
+                channel_ids = [channel_ids]
                 for ch_id in channel_ids:
                     try:
                         invite = await client.create_chat_invite_link(int(ch_id), creates_join_request=True)
